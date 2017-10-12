@@ -1,8 +1,7 @@
-obj/*
 wolf3d
+obj/*
 .DS_Store
 .directory
 ._*
-LOGS
 *~
 *.swp

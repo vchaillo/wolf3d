@@ -23,4 +23,17 @@
 # define WIN_W 1080
 # define WIN_H 720
 
+/*
+** map's blocs defines
+*/
+# define EMPTY 0
+# define WALL 1
+
+/*
+** player vision defines
+*/
+# define FOV 0
+# define FOCALE 0
+
+
 #endif

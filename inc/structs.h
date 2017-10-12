@@ -15,6 +15,29 @@ typedef struct				s_vector
 	float					z;
 }							t_vector;
 
+typedef struct				s_camera
+{
+	t_vector				pos;
+	t_vector				dir;
+	
+}							t_camera;
+
+typedef struct				s_player
+{
+	t_camera				camera;
+}							t_player;
+
+typedef struct				s_map
+{
+	int*					grid;
+}							t_map;
+
+typedef struct				s_level
+{
+	t_player				player;
+	t_map					map;
+}							t_level;
+
 typedef struct				s_env
 {
 	void					*mlx;
@@ -24,6 +47,7 @@ typedef struct				s_env
 	int						size;
 	int						endian;
 	int						bpp;
+	t_level					level;
 }							t_env;
 
 #endif

@@ -14,17 +14,31 @@ void			apply_color_to_image(t_env *e)
 {
 	int			x;
 	int			y;
-	t_color		color;
+	t_color		blue, red, white, color;
 
-	color.r = 100;
-	color.g = 0;
-	color.b = 50;
-	y = 1;
+	blue.r = 0;
+	blue.g = 0;
+	blue.b = 255;
+
+	white.r = 255;
+	white.g = 255;
+	white.b = 255;
+
+	red.r = 255;
+	red.g = 0;
+	red.b = 0;
+
+	y = 0;
 	while (y < WIN_H)
 	{
-		x = 1;
+		x = 0;
+		color = blue;
 		while (x < WIN_W)
 		{
+			if (x > WIN_W / 3)
+				color = white;
+			if (x > (WIN_W / 3) * 2)
+				color = red;
 			fill_pixel(e, color, x, y);
 			x++;
 		}
@@ -37,11 +51,7 @@ void			update_image(t_env *e)
 	mlx_destroy_image(e->mlx, e->img);
 	e->img = mlx_new_image(e->mlx, WIN_W, WIN_H);
 	e->data = mlx_get_data_addr(e->img, &(e->bpp), &(e->size), &(e->endian));
-	draw(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-}
-
-void			draw(t_env *e)
-{
+	compute(e);
 	apply_color_to_image(e);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
