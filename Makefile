@@ -24,9 +24,8 @@ SRC_MAIN = \
 
 SRC_CORE = \
 		core/mlx.c\
-		core/draw.c\
-		core/init.c\
 		core/compute.c\
+		core/render.c\
 
 SRC_GUI = \
 		gui/mouse_hook.c\
@@ -34,6 +33,7 @@ SRC_GUI = \
 
 SRC_TOOLS = \
 		tools/error.c\
+		tools/parser.c\
 
 SRC = $(SRC_MAIN) $(SRC_CORE) $(SRC_GUI) $(SRC_TOOLS)
 

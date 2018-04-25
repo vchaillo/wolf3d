@@ -4,6 +4,7 @@ void            compute(t_env *e)
 {
     int         x;
 
+    (void)e;
     x = 0;
     while (x < WIN_W)
     {
@@ -11,7 +12,7 @@ void            compute(t_env *e)
         // on calcule la distance du joueur au mur
         // on calcule la hauteur percue
         // on colorie la colone
+        // on colorie le sol et le plafond
         x++;
     }
-    (void)e;
 }

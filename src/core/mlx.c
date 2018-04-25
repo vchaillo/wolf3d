@@ -13,7 +13,6 @@ void	start_mlx(t_env *e)
 	e->win = mlx_new_window(e->mlx, WIN_W, WIN_H, "wolf3d");
 	e->img = mlx_new_image(e->mlx, WIN_W, WIN_H);
 	e->data = mlx_get_data_addr(e->img, &(e->bpp), &(e->size), &(e->endian));
-	init_level(e);
 	update_image(e);
 	mlx_expose_hook(e->win, expose_hook, e);
 	mlx_mouse_hook(e->win, mouse_hook, e);

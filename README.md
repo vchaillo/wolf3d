@@ -1,13 +1,13 @@
 wolf3d
 ===
 
-[Subject](../master/rt.pdf)
+[Subject](../master/wolf3d.pdf)
 
-[Commands list](../master/doc/commands.md)
+<!-- [Commands list](../master/doc/commands.md) -->
 
-<img src="https://raw.githubusercontent.com/vchaillo/rt/master/doc/screenshots/20170322_061703.bmp"/>
+<!-- <img src="https://raw.githubusercontent.com/vchaillo/wolf3d/master/doc/screenshots/example.png"/> -->
 
-### Description
+<!-- ### Description -->
 
 
 ### Usage
