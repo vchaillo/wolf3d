@@ -16,6 +16,7 @@
 # define MLX_ERROR 1
 # define ARG_ERROR 2
 # define OPEN_ERROR 3
+# define PARSING_ERROR 4
 
 /*
 ** window defines
@@ -34,6 +35,5 @@
 */
 # define FOV 0
 # define FOCALE 0
-
 
 #endif

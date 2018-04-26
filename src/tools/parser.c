@@ -2,63 +2,71 @@
 
 // TODO : Check Memory Leaks on parsing
 // TODO : Test strange maps and files error management
+// TODO : Test directory as map argument
 
-void      init_map(char **file_content, t_env *e)
+void		remove_spaces(char* str)
 {
-  int     i;
-  char    **line;
+	char	*i;
+	char	*j;
 
-  // TODO : Convert file_content to int** map's grid
-
-  i = 0;
-  while(file_content[i])
-  {
-    ft_putendl(file_content[i]);
-    line = ft_strsplit(file_content[i], ' ');
-    i++;
-  }
-  e->level.map.height = 10;
-  e->level.map.width = 10;
+	i = str;
+	j = str;
+	while(*j)
+	{
+		*i = *j++;
+		if (*i != ' ')
+			i++;
+	}
+	*i = '\0';
 }
 
-void            init_player(t_env *e)
+void		check_valid_chars(char **grid)
 {
-    // TODO : Init player position from the map
-    e->level.player.camera.pos.x = 1.5;
-    e->level.player.camera.pos.y = 0.5;
-    e->level.player.camera.pos.z = 1.5;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] < 48 || grid[i][j] > 57)
+				print_error(PARSING_ERROR);
+			j++;
+		}
+		i++;
+	}
 }
 
-char      **read_file(char *file)
+char		**read_file(char *path)
 {
-  int     fd;
-  char    *line;
-  char    *tmp;
-  char    **grid;
+	int		fd;
+	char	*line;
+	char	*tmp;
+	char	**grid;
 
-  line = NULL;
-  tmp = NULL;
-  fd = open(file, O_RDONLY);
-  if (fd < 0)
-    print_error(OPEN_ERROR);
-  while (get_next_line(fd, &line) > 0)
-  {
-    tmp = ft_strjoin(tmp, line);
-    tmp = ft_strjoin(tmp, "\n");
-    free(line);
-  }
-  grid = ft_strsplit(tmp, '\n');
-  free(tmp);
-  return(grid);
-  // while(grid[i] != )
-
+	line = NULL;
+	tmp = NULL;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	print_error(OPEN_ERROR);
+	while (get_next_line(fd, &line) > 0)
+	{
+		tmp = ft_strjoin(tmp, line);
+		tmp = ft_strjoin(tmp, "\n");
+		remove_spaces(tmp);
+		free(line);
+	}
+	grid = ft_strsplit(tmp, '\n');
+	check_valid_chars(grid);
+	free(tmp);
+	return(grid);
 }
 
-void      parser(char *path, t_env *e)
+void		parser(char *av, t_env *e)
 {
-  char    **file_content;
-
-  file_content = read_file(path);
-  init_map(file_content, e);
-  init_player(e);
+	e->file = read_file(av);
+	init_map(e);
+	init_player(e);
 }

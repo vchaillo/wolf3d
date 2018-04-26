@@ -14,24 +14,27 @@ void    render(t_env *e)
 {
 	compute(e);
 
-	// int       x;
-	// int       y;
-	// t_color   color;
+	int       x;
+	int       y;
+	t_color   color;
 
-  // x = 0;
-  // while (x < WIN_W)
-  // {
-	// 	y = 0;
-	// 	color.r = 0;
-	// 	color.g = 255;
-	// 	color.b = 0;
-  //   while (y < WIN_H)
-  //   {
-  //     fill_pixel(e, color, x, y);
-  //     y++;
-  //   }
-  //   x++;
-  // }
+	color.r = 0;
+	color.g = 0;
+	color.b = 255;
+
+	x = 0;
+	while (x < WIN_W)
+	{
+		int wall_h = 100;
+		int start = (WIN_H / 2.0) - (wall_h / 2.0);
+		y = 0;
+		while (y < wall_h)
+		{
+			fill_pixel(e, color, x, start + y);
+			y++;
+		}
+		x++;
+	}
 }
 
 void			update_image(t_env *e)

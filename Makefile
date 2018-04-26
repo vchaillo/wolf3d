@@ -24,6 +24,7 @@ SRC_MAIN = \
 
 SRC_CORE = \
 		core/mlx.c\
+		core/init.c\
 		core/compute.c\
 		core/render.c\
 
